@@ -1,0 +1,41 @@
+{
+  "name": "astraguard",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "tsc -b && vite build",
+    "test": "node --experimental-strip-types --test src/lib/geometry.test.ts",
+    "format": "prettier --write src vite.config.ts",
+    "dev:ui": "vite --host 127.0.0.1 --port 5174 --strictPort",
+    "dev:api": "backend/.venv/bin/python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000",
+    "setup:backend": "sh scripts/setup-backend.sh",
+    "test:api": "backend/.venv/bin/python -m pytest backend/tests -q",
+    "test:models": "backend/.venv/bin/python backend/scripts/smoke_models.py"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.2.0",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@turf/area": "^7.2.0",
+    "@turf/kinks": "^7.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.468.0",
+    "maplibre-gl": "^6.11.2",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwind-merge": "^3.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "prettier": "^3.9.9",
+    "tailwindcss": "^4.0.0",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.0"
+  }
+}
