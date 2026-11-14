@@ -53,9 +53,12 @@ npm run test:models
 
 All six supplied checkpoints loaded strictly and passed forward-pass smoke tests on this Mac. `backend/scripts/smoke-results.json` records the synthetic-input checks; these establish execution, not predictive accuracy. Real-world accuracy needs evaluation against labeled imagery.
 
-The Nikhil notebooks normalize each RGB band to 0–1 and then apply Albumentations normalization with its default 255 divisor. The adapter preserves that unusual double scaling to match the published pipeline. Confirm this preprocessing with the model author before relying on predictions. Esri imagery also differs from the SpaceNet training distribution. No EuroSAT ten-class checkpoint was supplied, so that task remains fallback.
+Our teammate Nikhil Rajput’s training notebooks normalize each RGB band to 0–1 and then apply Albumentations normalization with its default 255 divisor. The adapter preserves that unusual double scaling to match the published pipeline. This preprocessing should be validated with Nikhil as part of the team’s model evaluation. Esri imagery also differs from the SpaceNet training distribution. No EuroSAT ten-class checkpoint was supplied, so that task remains fallback.
 
-Sources: https://github.com/NikhilR5577/AstraGuard-Models and https://github.com/AntimonyTrisulfide/AstraGuard-LandClassifier . Consult upstream terms before redistribution.
+These models are contributions from our project teammates:
+
+- **Nikhil Rajput** — building segmentation and temporal change detection: [AstraGuard-Models](https://github.com/NikhilR5577/AstraGuard-Models).
+- **Manav** — six-class land-cover segmentation: [AstraGuard-LandClassifier](https://github.com/AntimonyTrisulfide/AstraGuard-LandClassifier).
 
 ## Disk usage
 
@@ -72,3 +75,12 @@ Result cards and JSON exports include the acquisition date, scene ID, scene clou
 No API key is needed. Polygon bounds and search dates are sent to the public Earth Search catalog; image windows are fetched from its AWS data bucket. No imagery files are written to disk: crops use a 32 MiB LRU memory cache with one-hour expiry. Native GDAL caches are also bounded. Crop bounds are limited to 1,048,576 pixels at 10 m. If a scene is unavailable, cloudy, incomplete or too large, the result explains the failure and uses the existing sample fallback; manual GeoTIFF upload remains available.
 
 Provider documentation: https://github.com/Element84/earth-search and https://earth-search.aws.element84.com/v1/collections/sentinel-2-c1-l2a .
+
+
+## Academic project and acknowledgments
+
+AstraGuard is a minor project at **Maulana Azad National Institute of Technology (MANIT), Bhopal**, undertaken in partial fulfillment of the requirements for the degree of **Bachelor of Technology (B.Tech) in Electronics and Communication Engineering**.
+
+We acknowledge **GeoLibre** as a reference for exploring geospatial maps and imagery resources during the development of AstraGuard, including the discovery of Esri World Imagery. AstraGuard’s map interface uses MapLibre GL; imagery and other third-party resources retain their respective attribution.
+
+**Copyright © 2026 Mohammad Maasir, Nikhil Rajput, Aditya Tomar, and Sujal Sharma.**
