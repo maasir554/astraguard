@@ -83,4 +83,4 @@ AstraGuard is a minor project at **Maulana Azad National Institute of Technology
 
 We acknowledge **GeoLibre** as a reference for exploring geospatial maps and imagery resources during the development of AstraGuard, including the discovery of Esri World Imagery. AstraGuard’s map interface uses MapLibre GL; imagery and other third-party resources retain their respective attribution.
 
-**Copyright © 2026 Mohammad Maasir, Nikhil Rajput, Aditya Tomar, and Sujal Sharma.**
+**Copyright © 2026 Mohammad Maasir, Nikhil Rajput, Manav Marmat, Aditya Tomar, and Sujal Sharma.**
